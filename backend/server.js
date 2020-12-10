@@ -21,9 +21,11 @@ connection.once('open', () => {
     console.log('MongoDB database connection established successfully');
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello There')
-})
+const exercisesRouter = require('./routes/exercises')
+const usersRouter = require('./routes/users')
+
+app.use('/exercises', exercisesRouter)
+app.use('/users', usersRouter)
 
 const port = process.env.PORT || 5000
 
